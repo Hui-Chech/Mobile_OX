@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-   static int Hp;
+    public static float Speed = 5 ;
+    private void Update()
+    {
+       Manager.Speed += Time.deltaTime;
+    }
 }

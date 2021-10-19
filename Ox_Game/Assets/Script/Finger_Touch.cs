@@ -36,12 +36,12 @@ public class Finger_Touch : MonoBehaviour
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             var Direction = Input.GetTouch(0).deltaPosition;
-            transform.Translate(Direction.x * Time.deltaTime * 0.2f, 0, Speed * Time.deltaTime);
+            transform.Translate(Direction.x * Time.deltaTime * 0.2f, 0, Manager.Speed * Time.deltaTime);
         }
         else
         {
             Vector3 move = new Vector3(transform.position.x, 0, 0);
-            move.z = transform.position.z + Speed * Time.deltaTime;
+            move.z = transform.position.z + Manager.Speed * Time.deltaTime;
             My_rigidbody.MovePosition(move);
         }
     }
