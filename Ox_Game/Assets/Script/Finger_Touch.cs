@@ -13,6 +13,7 @@ public class Finger_Touch : MonoBehaviour
 
     Rigidbody My_rigidbody;
     Animator My_animator;
+
     private void OnEnable()
     {
         Event_Send.Touch += Dash;

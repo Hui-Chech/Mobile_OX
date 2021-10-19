@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Sun : MonoBehaviour
 {
+
     public float Speed = 0;
     public GameObject Player;
 

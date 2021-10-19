@@ -5,8 +5,10 @@ using System.Linq;
 
 public class Instance : MonoBehaviour
 {
-    public float Instance_Time = 0;
-    public float Timer = 0;
+    public float Instance_Load_Time = 0;
+    public float Instance_Car_Time = 0;
+    public float Load_Timer = 0;
+    public float Car_Timer = 0;
     public Vector3 move = Vector3.right;
     public GameObject[] Prefabs_Loads;
     public GameObject[] Prefabs_Things;
@@ -22,17 +24,33 @@ public class Instance : MonoBehaviour
         Prefabs_Loads = Resources.LoadAll("Load").Cast<GameObject>().ToArray();
         Prefabs_Things = Resources.LoadAll("Things").Cast<GameObject>().ToArray();
     }
+
     void Update()
     {
-        Timer -= Time.deltaTime;
-        if (Timer <= 0)
+        Timer_for_Load(Manager.Instance_Load_Time);
+        Timer_for_Car(Manager.Instance_Car_Time);
+    }
+
+    void Timer_for_Load(float Instance_Time)
+    {
+        Load_Timer -= Time.deltaTime;
+        if (Load_Timer <= 0)
         {
-            Timer = Instance_Time;
+            Load_Timer = Instance_Time;
             Instance_Random_Loads();
         }
     }
+    void Timer_for_Car(float Instance_Time)
+    {
+        Car_Timer -= Time.deltaTime;
+        if (Car_Timer <= 0)
+        {
+            Car_Timer = Instance_Time;
+            Instance_Random_Cars();
+        }
+    }
 
-    private void Instance_Random_Things()
+    void Instance_Random_Cars()
     {
         int Random_int = Random.Range(0, Prefabs_Things.Length);
         int Random_X = Random.Range(-1, 2);
@@ -44,7 +62,7 @@ public class Instance : MonoBehaviour
                                             Quaternion.Euler(0, 180, 0));
                 Car.tag = "Turn_Car";
                 Car.AddComponent<Things>();
-                Car.GetComponent<Things>().Speed = Random.Range(-8, -10);
+                Car.GetComponent<Things>().Speed = Random.Range(-20, -25);
                 break;
             case (0):
                 return;
@@ -58,7 +76,7 @@ public class Instance : MonoBehaviour
         }
         /* if ( Random_X == 0)
          {
-             return;
+             
          }
          else
          {
@@ -69,12 +87,11 @@ public class Instance : MonoBehaviour
              New_Prefabs.GetComponent<Things>().Speed = Random.Range(8, 10);
          }*/
     }
-    private void Instance_Random_Loads()
+    void Instance_Random_Loads()
     {
         int Random_int = Random.Range(0, Prefabs_Loads.Length);
         GameObject Next_Prefabs = Instantiate(Prefabs_Loads[Random_int], new Vector3(0, 0, New_Prefab_V3.z + 10f), Quaternion.identity);
         Next_Prefabs.AddComponent<Things>();
         New_Prefab_V3 = Next_Prefabs.transform.position;
-        Instance_Random_Things();
     }
 }

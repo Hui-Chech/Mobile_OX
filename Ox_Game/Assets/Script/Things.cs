@@ -28,7 +28,7 @@ public class Things : MonoBehaviour
         {
             Debug.Log("小雞撞到了");
         }
-        if (other.gameObject.tag == "Delect")
+        if (other.gameObject.tag == "Delect" && tag != "Turn_Car")
         {
             Destroy(this.gameObject);
         }
@@ -37,6 +37,13 @@ public class Things : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+    }
+    private void OnCollisionEnter(Collision Other)
+    {
+        if (tag == "Car" && Other.gameObject.tag == "Player")
+        {
+            Debug.Log("小雞撞到了");
+        }
     }
 
 
