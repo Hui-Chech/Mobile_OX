@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Things : MonoBehaviour
 {
-
+    private float Lift_Time;
     public float Speed = 0;
 
     Rigidbody My_rigidbody;
@@ -12,6 +12,14 @@ public class Things : MonoBehaviour
     void Start()
     {
         My_rigidbody = GetComponent<Rigidbody>();
+    }
+    private void Update()
+    {
+        Lift_Time -= Time.deltaTime;
+        if (Lift_Time <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
     private void FixedUpdate()
     {

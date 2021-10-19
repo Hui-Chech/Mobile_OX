@@ -12,6 +12,7 @@ public class Finger_Touch : MonoBehaviour
     public bool Is_Dash = false;
 
     Rigidbody My_rigidbody;
+    Animator My_animator;
     private void OnEnable()
     {
         Event_Send.Touch += Dash;
@@ -24,6 +25,7 @@ public class Finger_Touch : MonoBehaviour
     private void Start()
     {
         My_rigidbody = GetComponent<Rigidbody>();
+        My_animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -33,7 +35,7 @@ public class Finger_Touch : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Vector3 move = new Vector3(1, 0, 0);
+        Vector3 move = new Vector3(transform.position.x, 0, 1);
         move.z = transform.position.z + Speed * Time.deltaTime;
         My_rigidbody.MovePosition(move);
     }
@@ -43,7 +45,7 @@ public class Finger_Touch : MonoBehaviour
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             var Direction = Input.GetTouch(0).deltaPosition;
-            transform.Translate(Direction.x * Time.deltaTime * 0.1f, 0, 0);
+            transform.Translate(Direction.x * Time.deltaTime * 0.2f, 0, 0);
         }
     }
     void Dash()
@@ -51,6 +53,7 @@ public class Finger_Touch : MonoBehaviour
         if (!Is_Dash)
         {
             Is_Dash = true;
+            My_animator.SetTrigger("Jump");
         }
     }
     void Dash_Timer()
