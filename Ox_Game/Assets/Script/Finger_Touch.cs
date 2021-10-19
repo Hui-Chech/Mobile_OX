@@ -18,11 +18,11 @@ public class Finger_Touch : MonoBehaviour
     {
         Event_Send.Touch += Dash;
         Timer = Dash_Time;
-    }
+    }//放入事件
     private void OnDisable()
     {
         Event_Send.Touch -= Dash;
-    }
+    }//收回事件
     private void Start()
     {
         My_rigidbody = GetComponent<Rigidbody>();
@@ -30,21 +30,21 @@ public class Finger_Touch : MonoBehaviour
     }
     void Update()
     {
-        Dash_Timer();
+        Dash_Timer();//衝刺計時
     }
     private void FixedUpdate()
     {
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             var Direction = Input.GetTouch(0).deltaPosition;
-            transform.Translate(Direction.x * Time.deltaTime * 0.2f, 0, Manager.Character_Speed * Time.deltaTime);
-        }
+            transform.Translate(Direction.x * Time.deltaTime * 0.3f, 0, Manager.Character_Speed * Time.deltaTime);
+        }//觸控水平移動
         else
         {
             Vector3 move = new Vector3(transform.position.x, 0, 0);
             move.z = transform.position.z + Manager.Character_Speed * Time.deltaTime;
             My_rigidbody.MovePosition(move);
-        }
+        }//自行前進
     }
     void Dash()
     {
@@ -53,7 +53,7 @@ public class Finger_Touch : MonoBehaviour
             Is_Dash = true;
             My_animator.SetTrigger("Jump");
         }
-    }
+    }//衝刺
     void Dash_Timer()
     {
         if (Is_Dash)
@@ -73,5 +73,5 @@ public class Finger_Touch : MonoBehaviour
         {
             return;
         }
-    }
+    }//衝刺計時
 }
