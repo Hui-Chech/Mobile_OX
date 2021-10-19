@@ -4,35 +4,39 @@ using UnityEngine;
 
 public class Things : MonoBehaviour
 {
-    private float Lift_Time = 5;
     public float Speed = 0;
 
     Rigidbody My_rigidbody;
+
 
     void Start()
     {
         My_rigidbody = GetComponent<Rigidbody>();
     }
-    private void Update()
-    {
-        Lift_Time -= Time.deltaTime;
-        if (Lift_Time <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-    }
     private void FixedUpdate()
     {
-        Vector3 move = new Vector3(0, 0, 1);
-        move.z = transform.position.z - Speed * Time.deltaTime;
-        My_rigidbody.MovePosition(move);
+        if (tag != "Load")
+        {
+            Vector3 move = Vector3.forward;
+            move.z = transform.position.z - Speed * Time.deltaTime;
+            My_rigidbody.MovePosition(move);
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
-       /* if (other.gameObject.tag == "Player")
+        if (tag == "Car" && other.gameObject.tag == "Player")
+        {
+            Debug.Log("小雞撞到了");
+        }
+        if (other.gameObject.tag == "Delect")
         {
             Destroy(this.gameObject);
-        }*/
+        }
+        if (tag == "Turn_Car" && other.gameObject.tag == "Turn_Delect")
+        {
+            Destroy(this.gameObject);
+        }
+
     }
 
 

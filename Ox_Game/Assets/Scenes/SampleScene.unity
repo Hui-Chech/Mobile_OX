@@ -139,6 +139,50 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1860937777}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &220357265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 220357266}
+  - component: {fileID: 220357267}
+  m_Layer: 0
+  m_Name: Delect
+  m_TagString: Delect
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &220357266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220357265}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.4, z: -45.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 215176459}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &220357267
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220357265}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &425862969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,6 +1502,18 @@ PrefabInstance:
     - target: {fileID: 263395747, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 629865950, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: Instance_Time
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 629865950, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: Turn_Point.y
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 629865950, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: Turn_Point.z
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 1975697567, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_Layer

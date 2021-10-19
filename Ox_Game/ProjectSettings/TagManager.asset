@@ -7,6 +7,10 @@ TagManager:
   - Ground
   - Tree
   - Car
+  - Load
+  - Delect
+  - Turn_Delect
+  - Turn_Car
   layers:
   - Default
   - TransparentFX

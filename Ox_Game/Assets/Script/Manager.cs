@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-    public static float Speed = 5 ;
-    private void Update()
+    public static float Character_Speed = 5;
+    private void Start()
     {
-       Manager.Speed += Time.deltaTime;
+        InvokeRepeating("Speed_Plus", 3.0f, 3.0f);
+    }
+    void Speed_Plus()
+    {
+        Manager.Character_Speed += 1;
     }
 }

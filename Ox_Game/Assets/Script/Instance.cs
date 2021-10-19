@@ -14,6 +14,8 @@ public class Instance : MonoBehaviour
     public int Prefab_num;
     [SerializeField]
     public Vector3 New_Prefab_V3 = Vector3.zero;
+    [SerializeField]
+    public GameObject Car;
 
     private void Awake()
     {
@@ -34,23 +36,44 @@ public class Instance : MonoBehaviour
     {
         int Random_int = Random.Range(0, Prefabs_Things.Length);
         int Random_X = Random.Range(-1, 2);
-        if (Random_X == 1 || Random_X == 0)
+        switch (Random_X)
         {
-            return;
-        }
-        else
-        {
-            GameObject New_Prefabs = Instantiate(Prefabs_Things[Random_int],
+            case (-1):
+                Car = Instantiate(Prefabs_Things[Random_int],
+                                            new Vector3(Random_X, transform.position.y, -transform.position.z),
+                                            Quaternion.Euler(0, 180, 0));
+                Car.tag = "Turn_Car";
+                Car.AddComponent<Things>();
+                Car.GetComponent<Things>().Speed = Random.Range(-8, -10);
+                break;
+            case (0):
+                return;
+            case (1):
+                Car = Instantiate(Prefabs_Things[Random_int],
                                              new Vector3(Random_X, transform.position.y, transform.position.z),
                                              Quaternion.identity);
-            New_Prefabs.AddComponent<Things>();
-            New_Prefabs.GetComponent<Things>().Speed = Random.Range(8, 10);
+                Car.AddComponent<Things>();
+                Car.GetComponent<Things>().Speed = Random.Range(8, 10);
+                break;
         }
+        /* if ( Random_X == 0)
+         {
+             return;
+         }
+         else
+         {
+             GameObject New_Prefabs = Instantiate(Prefabs_Things[Random_int],
+                                              new Vector3(Random_X, transform.position.y, transform.position.z),
+                                              Quaternion.identity);
+             New_Prefabs.AddComponent<Things>();
+             New_Prefabs.GetComponent<Things>().Speed = Random.Range(8, 10);
+         }*/
     }
     private void Instance_Random_Loads()
     {
         int Random_int = Random.Range(0, Prefabs_Loads.Length);
         GameObject Next_Prefabs = Instantiate(Prefabs_Loads[Random_int], new Vector3(0, 0, New_Prefab_V3.z + 10f), Quaternion.identity);
+        Next_Prefabs.AddComponent<Things>();
         New_Prefab_V3 = Next_Prefabs.transform.position;
         Instance_Random_Things();
     }
