@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Things : MonoBehaviour
 {
-    private float Lift_Time;
+    private float Lift_Time = 5;
     public float Speed = 0;
 
     Rigidbody My_rigidbody;

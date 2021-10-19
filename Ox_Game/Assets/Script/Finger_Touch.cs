@@ -27,25 +27,22 @@ public class Finger_Touch : MonoBehaviour
         My_rigidbody = GetComponent<Rigidbody>();
         My_animator = GetComponent<Animator>();
     }
-
     void Update()
     {
-        Useing_With_Finger();
         Dash_Timer();
     }
     private void FixedUpdate()
     {
-        Vector3 move = new Vector3(transform.position.x, 0, 1);
-        move.z = transform.position.z + Speed * Time.deltaTime;
-        My_rigidbody.MovePosition(move);
-    }
-
-    void Useing_With_Finger()
-    {
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             var Direction = Input.GetTouch(0).deltaPosition;
-            transform.Translate(Direction.x * Time.deltaTime * 0.2f, 0, 0);
+            transform.Translate(Direction.x * Time.deltaTime * 0.2f, 0, Speed * Time.deltaTime);
+        }
+        else
+        {
+            Vector3 move = new Vector3(transform.position.x, 0, 0);
+            move.z = transform.position.z + Speed * Time.deltaTime;
+            My_rigidbody.MovePosition(move);
         }
     }
     void Dash()
