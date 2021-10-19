@@ -7,6 +7,7 @@ public class Finger_Touch : MonoBehaviour
     public float Dash_Time = 3;
     public float Dash_Speed = 5;
     public float Timer = 0;
+    public float Speed = 0;
 
     public bool Is_Dash = false;
 
@@ -29,6 +30,12 @@ public class Finger_Touch : MonoBehaviour
     {
         Useing_With_Finger();
         Dash_Timer();
+    }
+    private void FixedUpdate()
+    {
+        Vector3 move = new Vector3(1, 0, 0);
+        move.z = transform.position.z + Speed * Time.deltaTime;
+        My_rigidbody.MovePosition(move);
     }
 
     void Useing_With_Finger()

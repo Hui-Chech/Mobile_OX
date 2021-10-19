@@ -33,10 +33,10 @@ public class Instance : MonoBehaviour
     private void Instance_Random_Things()
     {
         int Random_int = Random.Range(0, Prefabs_Things.Length);
-        var Random_Z = Random.Range(-3f, 3f);
-        GameObject New_Prefabs = Instantiate(Prefabs_Things[Random_int], new Vector3(transform.position.x, transform.position.y,
-                                                                              Random_Z),
-                                                                              Quaternion.identity);
+        int Random_X = Random.Range(-1,2);
+        GameObject New_Prefabs = Instantiate(Prefabs_Things[Random_int], 
+                                             new Vector3(Random_X,transform.position.y,transform.position.z),
+                                             Quaternion.identity);
         if (New_Prefabs.tag == "Tree")
         {
             New_Prefabs.GetComponent<BoxCollider>().isTrigger = false;

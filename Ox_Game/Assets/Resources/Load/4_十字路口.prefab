@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4497250042161008943}
   - component: {fileID: -9042961471255148028}
   m_Layer: 0
-  m_Name: "\u5341\u5B57\u8DEF\u53E3"
+  m_Name: "4_\u5341\u5B57\u8DEF\u53E3"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3368051796707904408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -115,8 +115,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.000846, y: 0.365924, z: 1.9999928}
-  m_Center: {x: 0, y: 0.182962, z: 0.00000011920929}
+  m_Size: {x: 2, y: 0.03, z: 2}
+  m_Center: {x: 0, y: 0.016179815, z: 0}
 --- !u!54 &-9042961471255148028
 Rigidbody:
   m_ObjectHideFlags: 0
