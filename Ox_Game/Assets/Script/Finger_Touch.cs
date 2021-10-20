@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Finger_Touch : MonoBehaviour
 {
+    Manager manager = new Manager();
+
     public float Dash_Time = 3;
     public float Dash_Speed = 5;
     public float Timer = 0;
@@ -16,13 +18,13 @@ public class Finger_Touch : MonoBehaviour
 
     private void OnEnable()
     {
-        Event_Send.Touch += Dash;
+        Event_Manager.Touch_Event += Dash;
         Timer = Dash_Time;
-    }//放入事件
+    }//放入事件(Dash)
     private void OnDisable()
     {
-        Event_Send.Touch -= Dash;
-    }//收回事件
+        Event_Manager.Touch_Event -= Dash;
+    }//收回事件(Dash)
     private void Start()
     {
         My_rigidbody = GetComponent<Rigidbody>();
@@ -45,7 +47,7 @@ public class Finger_Touch : MonoBehaviour
             move.z = transform.position.z + Manager.Character_Speed * Time.deltaTime;
             My_rigidbody.MovePosition(move);
         }//自行前進
-    }
+    }//玩家觸控水平移動  角色自行前進
     void Dash()
     {
         if (!Is_Dash)
@@ -74,4 +76,11 @@ public class Finger_Touch : MonoBehaviour
             return;
         }
     }//衝刺計時
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Car" || collision.transform.tag == "Turn_Car")
+        {
+            Event_Manager.Instance.Game_over();
+        }
+    }//執行事件(Game_Over)
 }
