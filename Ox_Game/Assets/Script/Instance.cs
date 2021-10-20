@@ -5,10 +5,8 @@ using System.Linq;
 
 public class Instance : MonoBehaviour
 {
-    public float Instance_Load_Time = 0;
-    public float Instance_Car_Time = 0;
-    public float Load_Timer = 0;
-    public float Car_Timer = 0;
+    private float Load_Timer = 0;
+    private float Car_Timer = 0;
     public Vector3 move = Vector3.right;
     public GameObject[] Prefabs_Loads;
     public GameObject[] Prefabs_Things;
@@ -39,7 +37,7 @@ public class Instance : MonoBehaviour
             Load_Timer = Instance_Time;
             Instance_Random_Loads();
         }
-    }
+    }//地圖生成計時
     void Timer_for_Car(float Instance_Time)
     {
         Car_Timer -= Time.deltaTime;
@@ -48,7 +46,7 @@ public class Instance : MonoBehaviour
             Car_Timer = Instance_Time;
             Instance_Random_Cars();
         }
-    }
+    }//障礙物生成計時
 
     void Instance_Random_Cars()
     {
@@ -86,12 +84,12 @@ public class Instance : MonoBehaviour
              New_Prefabs.AddComponent<Things>();
              New_Prefabs.GetComponent<Things>().Speed = Random.Range(8, 10);
          }*/
-    }
+    }//生成障礙物
     void Instance_Random_Loads()
     {
         int Random_int = Random.Range(0, Prefabs_Loads.Length);
         GameObject Next_Prefabs = Instantiate(Prefabs_Loads[Random_int], new Vector3(0, 0, New_Prefab_V3.z + 10f), Quaternion.identity);
         Next_Prefabs.AddComponent<Things>();
         New_Prefab_V3 = Next_Prefabs.transform.position;
-    }
+    }//生成地圖
 }

@@ -21,6 +21,9 @@ public class Manager : MonoBehaviour
     [SerializeField]
     private static float ScoreSpeed = 3;
     [SerializeField]
+    public static float Sun_Speed = 0.3f;
+
+    [SerializeField]
     private Text Now_Score_Text;
     [SerializeField]
     private Text End_Score_Text,Last_Score_Text;
@@ -47,7 +50,6 @@ public class Manager : MonoBehaviour
     {
         InvokeRepeating("Speed_Plus", 2.0f, 2.0f);
     }
-
     private void Update()
     {
         Score_Plus();
@@ -56,7 +58,7 @@ public class Manager : MonoBehaviour
     {
         Manager.Character_Speed += 0.5f;
         Manager.ScoreSpeed += 0.5f;
-    }//定時更新玩家速度_2.0f/次(InvokeRepeating)
+    }//定時更新玩家速度_2.0f/次_(InvokeRepeating)_*(Start)*
     void Score_Plus()
     {
         if (!Is_Gameover)
@@ -64,7 +66,7 @@ public class Manager : MonoBehaviour
             Score += Time.deltaTime * ScoreSpeed;
             Now_Score_Text.text = ((int)Score).ToString();
         }
-    }//分數計算(Update)
+    }//分數計算_*(Update)*
     public void Game_Over()
     {
         Is_Gameover = true;

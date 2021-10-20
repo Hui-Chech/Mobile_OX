@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Finger_Touch : MonoBehaviour
 {
-    Manager manager = new Manager();
-
     public float Dash_Time = 3;
     public float Dash_Speed = 5;
     public float Timer = 0;
-    public float Speed = 0;
 
     public bool Is_Dash = false;
 
