@@ -33,6 +33,10 @@ public class Finger_Touch : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        Move();//角色移動
+    }
+    void Move()
+    {
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
             var Direction = Input.GetTouch(0).deltaPosition;
@@ -44,7 +48,7 @@ public class Finger_Touch : MonoBehaviour
             move.z = transform.position.z + Manager.Character_Speed * Time.deltaTime;
             My_rigidbody.MovePosition(move);
         }//自行前進
-    }//玩家觸控水平移動  角色自行前進
+    }//角色水平移動  角色自行前進_*FixedUpdate*
     void Dash()
     {
         if (!Is_Dash)
@@ -72,7 +76,7 @@ public class Finger_Touch : MonoBehaviour
         {
             return;
         }
-    }//衝刺計時
+    }//衝刺計時_*Updata*
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Car" || collision.transform.tag == "Turn_Car")

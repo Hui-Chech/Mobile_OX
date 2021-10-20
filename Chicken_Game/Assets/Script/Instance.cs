@@ -21,7 +21,7 @@ public class Instance : MonoBehaviour
     {
         Prefabs_Loads = Resources.LoadAll("Load").Cast<GameObject>().ToArray();
         Prefabs_Things = Resources.LoadAll("Things").Cast<GameObject>().ToArray();
-    }
+    }//動態抓取要生成的物件
 
     void Update()
     {
