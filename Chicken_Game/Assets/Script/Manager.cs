@@ -9,13 +9,11 @@ public class Manager : MonoBehaviour
     [SerializeField]
     public static float Character_Speed = 3;
     [SerializeField]
-    public static float Car_Speed = 0;
-    [SerializeField]
     public static float Instance_Car_Time=1f;
     [SerializeField]
     public static float Instance_Load_Time = 0.5f;
     [SerializeField]
-    public static float Instance_Thins = 0.7f;
+    public static float Instance_Things = 0.7f;
     [SerializeField]
     private static float Last_Score,Score = 0;
     [SerializeField]
@@ -44,6 +42,8 @@ public class Manager : MonoBehaviour
     {
         Gameover_Image.SetActive(false);
         Last_Score = Score;
+        Character_Speed = 3;
+        ScoreSpeed = 3;
         Score = 0;
     }
     private void Start()
@@ -56,7 +56,7 @@ public class Manager : MonoBehaviour
     }
     void Speed_Plus()
     {
-        Manager.Character_Speed += 0.5f;
+        Character_Speed += 0.5f;
         Manager.ScoreSpeed += 0.5f;
     }//定時更新玩家速度_2.0f/次_(InvokeRepeating)_*(Start)*
     void Score_Plus()
